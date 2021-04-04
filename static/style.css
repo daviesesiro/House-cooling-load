@@ -108,7 +108,7 @@ button:hover {
 @media screen and (max-width: 400px) {
     h1{
         font-size: 2.2rem;
-    line-height: 3rem;
+        line-height: 3rem;
 
     }
 }
