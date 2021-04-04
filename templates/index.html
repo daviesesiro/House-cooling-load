@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression Model for predicting Cooling Load of Residents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+</head>
+
+<body>
+    <h1>linear regression model for prediction of house cooling load</h1>
+    <div class="box">
+        <div class="top">
+            <p class="est">0</p>
+            <p>Estimation Range: <span class="lowerEst">0</span> -- <span class="upperEst"> 0 </span></p>
+        </div>
+        <label for="heatingLoad">Heating Load</label>
+        <input oninput="onChange()" type="number" id="heatingLoad">
+        <label for="surfaceArea">Surface Area</label>
+        <input oninput="onChange()" type="number" id="surfaceArea">
+        <label for="overallHeight">Overall Height</label>
+        <input oninput="onChange()" type="number" id="overallHeight">
+
+        <button disabled class="btn">Make Prediction</button>
+    </div>
+
+    <script>
+        const button = document.querySelector('.btn');
+        const heatingLoad = document.querySelector('#heatingLoad')
+        const surfaceArea = document.querySelector('#surfaceArea')
+        const overallHeight = document.querySelector('#overallHeight')
+
+        button.onclick = async (e) => {
+            const request = await fetch("/api/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body:
+                    JSON.stringify({
+                        heatingLoad: Number(heatingLoad.value),
+                        surfaceArea: Number(surfaceArea.value),
+                        overallHeight: Number(overallHeight.value)
+                    })
+            })
+            const data = await request.json()
+            document.querySelector('.est').textContent = data.est;
+            document.querySelector('.lowerEst').textContent = data.lower_est;
+            document.querySelector('.upperEst').textContent = data.upper_est;
+        }
+
+        function onChange(e) {
+            if (heatingLoad.value == '' || surfaceArea.value == '' || overallHeight.value == '') {
+                button.setAttribute('disabled', true)
+            } else {
+                button.removeAttribute('disabled')
+            }
+        }
+    </script>
+</body>
+
+</html>
