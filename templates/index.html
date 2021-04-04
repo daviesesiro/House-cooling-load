@@ -34,6 +34,8 @@
         const overallHeight = document.querySelector('#overallHeight')
 
         button.onclick = async (e) => {
+            button.setAttribute('disabled', true)
+            button.textContent = 'Loading...'
             const request = await fetch("/api/predict", {
                 method: "POST",
                 headers: {
@@ -47,6 +49,8 @@
                     })
             })
             const data = await request.json()
+            button.removeAttribute('disabled')
+            button.textContent = 'Make Prediction'
             document.querySelector('.est').textContent = data.est;
             document.querySelector('.lowerEst').textContent = data.lower_est;
             document.querySelector('.upperEst').textContent = data.upper_est;
