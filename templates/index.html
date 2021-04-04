@@ -14,19 +14,21 @@
 
 <body>
     <h1>linear regression model for prediction of house cooling load</h1>
-    <div class="box">
-        <div class="top">
-            <p class="est">0</p>
-            <p>Estimation Range: <span class="lowerEst">0</span> -- <span class="upperEst"> 0 </span></p>
-        </div>
-        <label for="heatingLoad">Heating Load</label>
-        <input oninput="onChange()" type="number" id="heatingLoad">
-        <label for="surfaceArea">Surface Area</label>
-        <input oninput="onChange()" type="number" id="surfaceArea">
-        <label for="overallHeight">Overall Height</label>
-        <input oninput="onChange()" type="number" id="overallHeight">
+    <div class="body">
+        <div class="box">
+            <div class="top">
+                <p class="est">0</p>
+                <p>Estimation Range: <span class="lowerEst">0</span> -- <span class="upperEst"> 0 </span></p>
+            </div>
+            <label for="heatingLoad">Heating Load</label>
+            <input oninput="onChange()" type="number" id="heatingLoad">
+            <label for="surfaceArea">Surface Area</label>
+            <input oninput="onChange()" type="number" id="surfaceArea">
+            <label for="overallHeight">Overall Height</label>
+            <input oninput="onChange()" type="number" id="overallHeight">
 
-        <button disabled class="btn">Make Prediction</button>
+            <button disabled class="btn">Make Prediction</button>
+        </div>
     </div>
 
     <script>

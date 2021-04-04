@@ -17,21 +17,27 @@ html {
 
 body {
     background-color: #f7f7ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+   
+}
+
+.body{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     min-height: 80vh;
 }
 
 h1{
+    padding: 1rem;
+    color: white;
     text-transform: capitalize;
     font-size: 3rem;
     margin-bottom: 4rem;
     text-align: center;
-    color: var(--primary);
-    max-width: 60rem;
+    background-color: var(--primary);
     line-height: 4.5rem;
+    border-bottom: rgb(130, 206, 58) 5px solid;
 }
 
 .box {
@@ -72,6 +78,7 @@ button {
     border: none;
     padding: 1rem;
     border-radius: .8rem;
+    margin-top: 1rem;
     background-color: var(--primary);
     color: white;
     transition: .3s;
